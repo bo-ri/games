@@ -1,0 +1,9 @@
+{
+  "name": "kojien_carta",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.27.0",
+  "engines": {
+    "node": ">=24"
+  }
+}

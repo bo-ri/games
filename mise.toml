@@ -1,0 +1,9 @@
+[tools]
+node = "24.13.0"
+pnpm = "latest"
+
+[tasks."cc-sdd:codex"]
+run = "npx cc-sdd --lang ja --codex"
+
+[tasks."cc-sdd:claude"]
+run = "npx cc-sdd --lang ja --claude"

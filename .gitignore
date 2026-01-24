@@ -1,0 +1,7 @@
+# AI related files
+.claude
+.codex
+.opencode
+
+# node related files
+node_modules
