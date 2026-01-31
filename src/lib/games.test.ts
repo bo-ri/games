@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
-import { extractGameMeta, fetchGameSummaries, parseGameIndex } from "./games"
+import { extractGameMeta, fetchGameData, fetchGameSummaries, parseGameIndex } from "./games"
 
 type MockResponse = {
   ok: boolean
@@ -86,5 +86,67 @@ describe("fetchGameSummaries", () => {
       .mockResolvedValueOnce(createResponse({ items: [] }))
 
     await expect(fetchGameSummaries()).rejects.toThrow("No valid games")
+  })
+})
+
+describe("fetchGameData", () => {
+  const fetchMock = vi.fn()
+
+  beforeEach(() => {
+    fetchMock.mockReset()
+    globalThis.fetch = fetchMock as unknown as typeof fetch
+  })
+
+  it("returns parsed game data when valid", async () => {
+    fetchMock.mockResolvedValueOnce(
+      createResponse({
+        meta: { title: "広辞苑カルタ", description: "説明" },
+        items: [
+          {
+            description: "句",
+            answer: "答え",
+            howtoread_description: "く",
+            howtoread_answer: "こたえ",
+          },
+        ],
+      }),
+    )
+
+    await expect(fetchGameData("kojien")).resolves.toEqual({
+      meta: { title: "広辞苑カルタ", description: "説明" },
+      items: [
+        {
+          description: "句",
+          answer: "答え",
+          howToReadDescription: "く",
+          howToReadAnswer: "こたえ",
+        },
+      ],
+    })
+  })
+
+  it("calls json once per request", async () => {
+    const json = vi.fn().mockResolvedValueOnce({
+      meta: { title: "広辞苑カルタ", description: "説明" },
+      items: [
+        {
+          description: "句",
+          answer: "答え",
+          howtoread_description: "く",
+          howtoread_answer: "こたえ",
+        },
+      ],
+    })
+    fetchMock.mockResolvedValueOnce({ ok: true, json })
+
+    await fetchGameData("kojien")
+
+    expect(json).toHaveBeenCalledTimes(1)
+  })
+
+  it("throws when game data is invalid", async () => {
+    fetchMock.mockResolvedValueOnce(createResponse({ meta: { title: "広辞苑" } }))
+
+    await expect(fetchGameData("kojien")).rejects.toThrow("Invalid carta data")
   })
 })

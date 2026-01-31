@@ -1,7 +1,5 @@
-export type GameMeta = {
-  title: string
-  description: string
-}
+import type { CartaData, GameMeta } from "./cartaData"
+import { parseCartaData } from "./cartaData"
 
 export type GameSummary = {
   gameId: string
@@ -22,8 +20,8 @@ const fetchJson = async (url: string) => {
   if (!response.ok) {
     throw new Error(`Request failed: ${url}`)
   }
-
-  return response.json()
+  const data = await response.json()
+  return data
 }
 
 export const parseGameIndex = (data: unknown): string[] => {
@@ -61,6 +59,11 @@ export const fetchGameMeta = async (gameId: string): Promise<GameMeta> => {
   }
 
   return meta
+}
+
+export const fetchGameData = async (gameId: string): Promise<CartaData> => {
+  const data = await fetchJson(`/assets/data/${gameId}.json`)
+  return parseCartaData(data)
 }
 
 export const fetchGameSummaries = async (): Promise<GameSummary[]> => {
