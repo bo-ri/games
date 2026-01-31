@@ -106,6 +106,12 @@ pnpm run test
 - `answer`: 答え
 - `howtoread_answer`: 答えの読み方
 
+## 現行データの扱い（暫定）
+
+プロトタイプ段階では、サンプルデータを `/data/` に配置して扱う。
+この段階の JSON は旧形式（`{ "kojien": [...] }`）を許容し、
+実装時に `assets/data/{gameId}.json` の標準形式へ整合する。
+
 ```json
 {
   "meta": {
@@ -174,4 +180,4 @@ const cards = await response.json()
 
 ---
 
-updated_at: 2026-01-24
+updated_at: 2026-01-30

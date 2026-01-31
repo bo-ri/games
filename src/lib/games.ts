@@ -1,0 +1,86 @@
+export type GameMeta = {
+  title: string
+  description: string
+}
+
+export type GameSummary = {
+  gameId: string
+  meta: GameMeta
+}
+
+type GameIndex = {
+  gameIds: string[]
+}
+
+type GameData = {
+  meta?: GameMeta
+}
+
+const fetchJson = async (url: string) => {
+  const response = await fetch(url)
+
+  if (!response.ok) {
+    throw new Error(`Request failed: ${url}`)
+  }
+
+  return response.json()
+}
+
+export const parseGameIndex = (data: unknown): string[] => {
+  const index = data as GameIndex
+
+  if (!index?.gameIds || !Array.isArray(index.gameIds)) {
+    throw new Error("Invalid game index data")
+  }
+
+  return index.gameIds
+}
+
+export const extractGameMeta = (data: unknown): GameMeta | null => {
+  const gameData = data as GameData
+  const meta = gameData?.meta
+
+  if (!meta || typeof meta.title !== "string" || typeof meta.description !== "string") {
+    return null
+  }
+
+  return meta
+}
+
+export const fetchGameIndex = async (): Promise<string[]> => {
+  const data = await fetchJson("/assets/data/index.json")
+  return parseGameIndex(data)
+}
+
+export const fetchGameMeta = async (gameId: string): Promise<GameMeta> => {
+  const data = await fetchJson(`/assets/data/${gameId}.json`)
+  const meta = extractGameMeta(data)
+
+  if (!meta) {
+    throw new Error("Invalid game meta data")
+  }
+
+  return meta
+}
+
+export const fetchGameSummaries = async (): Promise<GameSummary[]> => {
+  const gameIds = await fetchGameIndex()
+
+  if (gameIds.length === 0) {
+    return []
+  }
+
+  const results = await Promise.allSettled(
+    gameIds.map(async (gameId) => ({ gameId, meta: await fetchGameMeta(gameId) })),
+  )
+
+  const summaries = results.flatMap((result) =>
+    result.status === "fulfilled" ? [result.value] : [],
+  )
+
+  if (summaries.length === 0) {
+    throw new Error("No valid games")
+  }
+
+  return summaries
+}
