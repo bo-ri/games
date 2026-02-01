@@ -1,0 +1,308 @@
+{
+  "meta": {
+    "title": "広辞苑かるた",
+    "description": "知らない意味を知る体験、ひらめきと瞬発力の早押しクイズかるたゲーム"
+  },
+  "items": [
+    {
+      "description": "自然の山野をさすらう旅に出たいという心",
+      "howtoread_description": "しぜんのさんやをさすらうたびにでたいというこころ",
+      "answer": "風雲の情",
+      "howtoreadanswer": "ふううんのじょう"
+    },
+    {
+      "description": "よい獲物。特に、こちらの思う壺にハマるような人物。",
+      "howtoread_description": "よいえもの。とくに、こちらのおもうつぼにはまるようなじんぶつ。",
+      "answer": "好い鴨",
+      "howtoreadanswer": "よいかも"
+    },
+    {
+      "description": "物の多くあるさまの形容。山ほど。",
+      "howtoread_description": "もののおおくあるさまのけいよう。やまほど。",
+      "answer": "牛の寝た程",
+      "howtoreadanswer": "うしのねたほど"
+    },
+    {
+      "description": "通った後に良い香りの漂うように、衣服に香をたきしめておくこと。",
+      "howtoread_description": "とおったあとによいかおりのただようように、いふくにこうをたきしめておくこと。",
+      "answer": "追風用意",
+      "howtoreadanswer": "おいかぜようい"
+    },
+    {
+      "description": "当て推量でいう言葉。",
+      "howtoread_description": "あてすいりょうでいうことば。",
+      "answer": "推し事",
+      "howtoreadanswer": "おしごと"
+    },
+    {
+      "description": "別れているものが最終的に一つになること。",
+      "howtoread_description": "わかれているものがさいしゅうてきにひとつになること。",
+      "answer": "帰一",
+      "howtoreadanswer": "きいつ"
+    },
+    {
+      "description": "外科手術は体を切り開き鬼のように残酷に見えるが、患者を救いたい仏のような慈悲心に基づいているということ。",
+      "howtoread_description": "げかしゅじゅつはからだをきりひらきおにのようにざんこくにみえるが、かんじゃをすくいたいほとけのようなじひしんにもとづいていること。",
+      "answer": "鬼手仏心",
+      "howtoreadanswer": "きしゅぶっしん"
+    },
+    {
+      "description": "説話類型の一つ。貴い家柄の英雄が本郷を離れて流浪し、苦難を動物や女性の助けなどで克服してゆく話。",
+      "howtoread_description": "せつわるいけいのひとつ。とうといいえがらのえいゆうがほんごうをはなれてるろうし、くなんをどうぶつやじょせいのたすけなどでこくふくしてゆくはなし。",
+      "answer": "貴種流離譚",
+      "howtoreadanswer": "きしゅりゅうりたん"
+    },
+    {
+      "description": "悲しみのために腸が捩れるほどくるしむこと。",
+      "howtoread_description": "かなしみのためにちょうがねじれるほどくるしむこと。",
+      "answer": "九回腸",
+      "howtoreadanswer": "きゅうかいちょう"
+    },
+    {
+      "description": "レモンの類。",
+      "howtoread_description": "れもんのたぐい。",
+      "answer": "枸櫞",
+      "howtoreadanswer": "くえん"
+    },
+    {
+      "description": "小さくくしゃみをする音。",
+      "howtoread_description": "ちいさくくしゃみをするおと。",
+      "answer": "くしゃん",
+      "howtoreadanswer": "くしゃん"
+    },
+    {
+      "description": "極めてわずかなさま。いささか。",
+      "howtoread_description": "きわめてわずかなさま。いささか。",
+      "answer": "けちりん",
+      "howtoreadanswer": "けちりん"
+    },
+    {
+      "description": "天つ罪の一つ。他人が穀物の種子をいったんまいた上にまたまいて、その生長を妨げること。",
+      "howtoread_description": "あまつつみのひとつ。たにんがこくもつのしゅしをいったんまいたうえにまたまいて、そのせいちょうをさまたげること。",
+      "answer": "重播",
+      "howtoreadanswer": "しきまき"
+    },
+    {
+      "description": "太陽の異称。",
+      "howtoread_description": "たいようのいしょう。",
+      "answer": "赤烏",
+      "howtoreadanswer": "せきう"
+    },
+    {
+      "description": "射る矢などが、飛んだ先まで勢いの衰えないこと。",
+      "howtoread_description": "いるやなどが、とんださきまでいきおいのおとろえないこと。",
+      "answer": "末強",
+      "howtoreadanswer": "すえづよ"
+    },
+    {
+      "description": "子供をおどす語。",
+      "howtoread_description": "こどもをおどすご。",
+      "answer": "ちいちいももんがあ",
+      "howtoreadanswer": "ちいちいももんがあ"
+    },
+    {
+      "description": "まっすぐ伸びるさま。そびえ立つさま。",
+      "howtoread_description": "まっすぐのびるさま。そびえたつさま。",
+      "answer": "矗矗",
+      "howtoreadanswer": "ちくちく"
+    },
+    {
+      "description": "鳥を網で捕らえる時に用いるおとり。",
+      "howtoread_description": "とりをあみでとらえるときにもちいるおとり。",
+      "answer": "囮",
+      "howtoreadanswer": "ててれ"
+    },
+    {
+      "description": "額の上に白い小点のある馬の毛色。",
+      "howtoread_description": "ひたいのうえにしろいしょうてんのあるうまのけいろ。",
+      "answer": "星月",
+      "howtoreadanswer": "ほしづき"
+    },
+    {
+      "description": "地位の低いもの、技量の劣っている者をあざけっていう語。",
+      "howtoread_description": "ちいのひくいもの、ぎりょうのおとっているものをあざけっていうご。",
+      "answer": "ぺいぺい",
+      "howtoreadanswer": "ぺいぺい"
+    },
+    {
+      "description": "冷酷な人をののしっていう語。",
+      "howtoread_description": "れいこくなひとをののしっていうご",
+      "answer": "無血虫",
+      "howtoreadanswer": "むけつちゅう"
+    },
+    {
+      "description": "はっきり区別できないほどに混乱している。",
+      "howtoread_description": "はっきりくべつできないほどにこんらんしている。",
+      "answer": "やみらみっちゃ",
+      "howtoreadanswer": "やみらみっちゃ"
+    },
+    {
+      "description": "おどけたこと。ふざけ。じょうだん。",
+      "howtoread_description": "おどけたこと。ふざけ。じょうだん。",
+      "answer": "戯",
+      "howtoreadanswer": "あじゃら"
+    },
+    {
+      "description": "埋葬を終えて引き上げる際、後ろ向きになって肩越しに石を墓に投げ、振り向かずに帰る習俗。",
+      "howtoread_description": "まいそうをおえてひきあげるさい、うしろむきになってかたごしにいしをはかになげ、ふりむかずにかえるしゅうぞく。",
+      "answer": "石噛ませ",
+      "howtoreadanswer": "いしかませ"
+    },
+    {
+      "description": "タツノオトシゴの別称。",
+      "howtoread_description": "たつのおとしごのべっしょう。",
+      "answer": "海馬",
+      "howtoreadanswer": "うみうま"
+    },
+    {
+      "description": "会ってそれと気づかない、あるいは誰であるか思いつかない時にいう挨拶語。相手を見直した時にも使う。",
+      "howtoread_description": "あってそれときづかない、sるいはだれであるかおもいつかないときにいうあいさつご。あいてをみなおしたときにもつかう。",
+      "answer": "御見逸れ",
+      "howtoreadanswer": "おみそれ"
+    },
+    {
+      "description": "心の憂さをまぎらすこと。",
+      "howtoread_description": "こころのうさをまぎらすこと。",
+      "answer": "気散じ",
+      "howtoreadanswer": "きさんじ"
+    },
+    {
+      "description": "気づかれがすること。",
+      "howtoread_description": "きづかれがすること。",
+      "answer": "気しんど",
+      "howtoreadanswer": "きしんど"
+    },
+    {
+      "description": "家の名折れ。家名の恥。",
+      "howtoread_description": "いえのなおれ。かめいのはじ。",
+      "answer": "家損",
+      "howtoreadanswer": "けそん"
+    },
+    {
+      "description": "日本最初の物理学書。青地林宗著。",
+      "howtoread_description": "にほんさいしょのぶつりがくしょ。あおちりんそうちょ。",
+      "answer": "気海観瀾",
+      "howtoreadanswer": "きかいかんらん"
+    },
+    {
+      "description": "猿を飼う者。",
+      "howtoread_description": "さるをかうもの。",
+      "answer": "狙公",
+      "howtoreadanswer": "そこう"
+    },
+    {
+      "description": "家柄が普通の人。",
+      "howtoread_description": "いえがらがふつうのひと。",
+      "answer": "直者",
+      "howtoreadanswer": "なおもの"
+    },
+    {
+      "description": "幼少からすぐれている人。",
+      "howtoread_description": "ようしょうからすぐれているひと。",
+      "answer": "寧馨児",
+      "howtoreadanswer": "ねいけいじ"
+    },
+    {
+      "description": "はきものの固い部分にこすれて足にできる炎症。",
+      "howtoread_description": "はきもののかたいぶぶんにこすれてあしにできるえんしょう。",
+      "answer": "芒墨",
+      "howtoreadanswer": "のいずみ"
+    },
+    {
+      "description": "カモの一種。雄は白色で、嘴から眼にかけてと、背中の中央・腰・翼などに黒色部がある。",
+      "howtoread_description": "かものいっしゅ。おすはしろいろで、くちばしからめにかけてと、せなかのちゅうおう・こし・つばさなどにこくしょくぶがある。",
+      "answer": "巫女秋沙",
+      "howtoreadanswer": "みこあいさ"
+    },
+    {
+      "description": "貴人が乗る馬。",
+      "howtoread_description": "きじんがのるうま。",
+      "answer": "召馬",
+      "howtoreadanswer": "めしうま"
+    },
+    {
+      "description": "伝説上の名工。また、その制作した刀。江戸亀戸天神の宝剣もその作といわれ、抜くと必ず雨が降るとされた。",
+      "howtoread_description": "でんせつじょうのめいこう。また、そのせいさくしたかたな。えどかめいどてんじんのほうけんもそのさくといわれ、ぬくとかならずあめがふるとされた。",
+      "answer": "天国",
+      "howtoreadanswer": "あまくに"
+    },
+    {
+      "description": "小麦の粗挽き粉に水を含ませ粒状に加工した食品。また、それを蒸して魚・肉・野菜の入ったスープをかけて食べる北アフリカの料理。",
+      "howtoread_description": "こむぎのあらびきこにみずをふくませつぶじょうにかこうしたしょくひん。また、それをむしてさかな・にく・やさいのはいったすーぷをかけてたべるきたあふりかのりょうり。",
+      "answer": "クスクス",
+      "howtoreadanswer": "くすくす"
+    },
+    {
+      "description": "江戸時代に広く使われた漢方の風邪薬の名。",
+      "howtoread_description": "えどじだいにひろくつかわれたかんぽうのかぜぐすりのな。",
+      "answer": "排毒散",
+      "howtoreadanswer": "はいどくさん"
+    },
+    {
+      "description": "煩悩から生じた、けがれたもの。脳・害・恨・諂・誑・憍。",
+      "howtoread_description": "ぼんのうからしょうじた、けがれたもの。のう・がい・こん・てん・きょう・きょう",
+      "answer": "六垢",
+      "howtoreadanswer": "ろっく"
+    },
+    {
+      "description": "限りない年月。",
+      "howtoread_description": "かぎりないねんげつ。",
+      "answer": "千五百秋",
+      "howtoreadanswer": "ちいほあき"
+    },
+    {
+      "description": "おからに貝の剥身を加えて煮た汁。豆腐のしぼりかすの白いのを雪に、貝の剥身を模様の千鳥に見立てていう語。",
+      "howtoread_description": "おからにかいのむきみをくわえてにたしる。とうふのしぼりかすのしろいのをゆきに、かいのむきみをもようのちどりにみたてていうご。",
+      "answer": "雪に千鳥",
+      "howtoreadanswer": "ゆきにちどり"
+    },
+    {
+      "description": "有機ハロゲン化物と有機ホウ酸化合物とのクロスカップリング。パラジウム錯体を触媒とする。",
+      "howtoread_description": "ゆうきはろげんかぶつとゆうきほうさんかごうぶつとのくろすかっぷりんぐ。ぱらじうむさくたいをしょくばいとする。",
+      "answer": "鈴木カップリング",
+      "howtoreadanswer": "すずきかっぷりんぐ"
+    },
+    {
+      "description": "智慧の力が煩悩を断ち切ることを、剣にたとえていう語。",
+      "howtoread_description": "ちえのちからがぼんのうをたちきることを、けんにたとえていうご。",
+      "answer": "慧剣",
+      "howtoreadanswer": "えけん"
+    },
+    {
+      "description": "罪をといただすこと。",
+      "howtoread_description": "つみをといただすこと。",
+      "answer": "鞠訊",
+      "howtoreadanswer": "きくじん"
+    },
+    {
+      "description": "連日、天気のくもりがちなこと。",
+      "howtoread_description": "れんじつ、てんきのくもりがちなこと。",
+      "answer": "積陰",
+      "howtoreadanswer": "せきいん"
+    },
+    {
+      "description": "腕の内側のややふくれた所。",
+      "howtoread_description": "うでのうちがわのややふくれたところ。",
+      "answer": "手腓",
+      "howtoreadanswer": "たこむら"
+    },
+    {
+      "description": "こそどろ。",
+      "howtoread_description": "こそどろ。",
+      "answer": "鼠窃",
+      "howtoreadanswer": "そせつ"
+    },
+    {
+      "description": "正二十面体の二十個の面に0から9までの数字を二度ずつ書き入れたさいころ。",
+      "howtoread_description": "せいにじゅうめんたいのにじゅっこのめんにぜろからきゅうまでのすうじをにどずつかきいれたさいころ。",
+      "answer": "乱数賽",
+      "howtoreadanswer": "らんすうさい"
+    },
+    {
+      "description": "魚の腹の肥えたところ。",
+      "howtoread_description": "さかなのはらのこえたところ。",
+      "answer": "腴",
+      "howtoreadanswer": "つちすり"
+    }
+  ]
+}
