@@ -14,6 +14,20 @@ type GameData = {
   meta?: GameMeta
 }
 
+const normalizeBaseUrl = (value: string) => {
+  if (!value || value === "/") {
+    return "/"
+  }
+
+  return value.endsWith("/") ? value : `${value}/`
+}
+
+const buildAssetUrl = (path: string) => {
+  const baseUrl = normalizeBaseUrl(import.meta.env.BASE_URL)
+  const normalizedPath = path.startsWith("/") ? path.slice(1) : path
+  return `${baseUrl}${normalizedPath}`
+}
+
 const fetchJson = async (url: string) => {
   const response = await fetch(url)
 
@@ -46,12 +60,12 @@ export const extractGameMeta = (data: unknown): GameMeta | null => {
 }
 
 export const fetchGameIndex = async (): Promise<string[]> => {
-  const data = await fetchJson("/assets/data/index.json")
+  const data = await fetchJson(buildAssetUrl("assets/data/index.json"))
   return parseGameIndex(data)
 }
 
 export const fetchGameMeta = async (gameId: string): Promise<GameMeta> => {
-  const data = await fetchJson(`/assets/data/${gameId}.json`)
+  const data = await fetchJson(buildAssetUrl(`assets/data/${gameId}.json`))
   const meta = extractGameMeta(data)
 
   if (!meta) {
@@ -62,7 +76,7 @@ export const fetchGameMeta = async (gameId: string): Promise<GameMeta> => {
 }
 
 export const fetchGameData = async (gameId: string): Promise<CartaData> => {
-  const data = await fetchJson(`/assets/data/${gameId}.json`)
+  const data = await fetchJson(buildAssetUrl(`assets/data/${gameId}.json`))
   return parseCartaData(data)
 }
 

@@ -76,7 +76,7 @@ jobs:
 
       - name: Build
         env:
-          BASE_PATH: ${{ inputs.base_path }}
+          BASE_PATH: ${{ inputs.base_path != '' && inputs.base_path || (endsWith(github.event.repository.name, '.github.io') && '/' || format('/{0}/', github.event.repository.name)) }}
         run: npm run build
 
       - name: Upload artifact
