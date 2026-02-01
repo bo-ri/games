@@ -96,5 +96,7 @@
 
 #### Acceptance Criteria
 1. The Kojien Carta Reader shall 右上に読み上げ速度を調整するスライドバーを表示する
-2. When プレイヤーがスライドバーの値を変更する, the Kojien Carta Reader shall サンプルテキスト「ふるいけやかわずとびこむなつのおと」を読み上げる
-3. When 読み上げ速度が設定される, the Kojien Carta Reader shall 以降の全ての札の読み上げにその速度を適用する
+2. The Kojien Carta Reader shall 読み上げ速度スライドバーの横にサンプル再生ボタンを表示する
+3. When プレイヤーがサンプル再生ボタンを押す, the Kojien Carta Reader shall サンプルテキスト「ふるいけやかわずとびこむなつのおと」を読み上げる
+4. When プレイヤーがスライドバーの値を変更する, the Kojien Carta Reader shall サンプル音声を再生しない
+5. When 読み上げ速度が設定される, the Kojien Carta Reader shall 以降の全ての札の読み上げにその速度を適用する

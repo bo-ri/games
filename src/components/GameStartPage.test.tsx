@@ -138,7 +138,7 @@ describe("GameStartPage", () => {
     expect(matches.length).toBeGreaterThan(0)
   })
 
-  it("speaks the sample text when rate changes", async () => {
+  it("does not speak sample text when rate changes", async () => {
     speak.mockResolvedValue({ ok: true, value: { text: "サンプル" } })
     fetchGameData.mockResolvedValueOnce(createGameData())
     renderWithRoute("/game/kojien")
@@ -146,6 +146,21 @@ describe("GameStartPage", () => {
     await screen.findByText("説明")
     const slider = screen.getByLabelText("読み上げ速度")
     fireEvent.change(slider, { target: { value: "1.5" } })
+
+    expect(speak).not.toHaveBeenCalled()
+  })
+
+  it("plays sample text when play button is pressed", async () => {
+    speak.mockResolvedValue({ ok: true, value: { text: "サンプル" } })
+    fetchGameData.mockResolvedValueOnce(createGameData())
+    renderWithRoute("/game/kojien")
+
+    await screen.findByText("説明")
+    const slider = screen.getByLabelText("読み上げ速度")
+    fireEvent.change(slider, { target: { value: "1.5" } })
+
+    const playButton = screen.getByRole("button", { name: "サンプル再生" })
+    fireEvent.click(playButton)
 
     expect(speak).toHaveBeenCalledWith(
       expect.objectContaining({

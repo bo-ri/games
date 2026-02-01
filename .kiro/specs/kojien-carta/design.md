@@ -72,8 +72,10 @@
 | 7.5 | 読み札カード高さ50vh | CartaCardView | CardProps | Layout |
 | 7.6 | 15文字改行 | CartaCardView | CardProps | Layout |
 | 8.1 | 右上スライダー | SpeedControlPanel | SpeedControlProps | SpeedSample |
-| 8.2 | サンプル読み上げ | SpeechRateController, SpeechController | SpeechControllerService | SpeedSample |
-| 8.3 | 読み上げ速度適用 | SpeechRateController, SpeechController | SpeechControllerService | ReadingCycle |
+| 8.2 | サンプル再生ボタン表示 | SpeedControlPanel | SpeedControlProps | SpeedSample |
+| 8.3 | サンプル読み上げ | SpeechRateController, SpeechController | SpeechControllerService | SpeedSample |
+| 8.4 | スライダー変更時は再生しない | SpeechRateController | State | SpeedSample |
+| 8.5 | 読み上げ速度適用 | SpeechRateController, SpeechController | SpeechControllerService | ReadingCycle |
 
 ## Architecture
 
@@ -148,14 +150,14 @@ sequenceDiagram
 | CartaPageView | UI | 画面構成と表示状態の統合 | 1.6, 2.1-2.5, 3.4, 3.7, 6.8, 7.3-7.4 | ReadingFlowController (P0), GameDataLoader (P0) | State |
 | GameDataLoader | Data | JSON 取得と検証 | 1.1-1.5, 2.4 | StaticJson (P0) | Service |
 | ReadingFlowController | Logic | 出題順管理と状態遷移 | 3.1-3.6, 4.1, 4.3-4.4, 5.15, 6.1-6.6 | SpeechController (P0), SpeechRateController (P0) | Service, State |
-| SpeechController | Integration | 音声読み上げ制御 | 4.1, 4.3-4.4, 5.2, 5.6, 8.2-8.3 | SpeechSynthesis (P0) | Service |
-| SpeechRateController | State | 読み上げ速度の保持 | 8.2-8.3 | SpeechController (P0) | State |
+| SpeechController | Integration | 音声読み上げ制御 | 4.1, 4.3-4.4, 5.2, 5.6, 8.3, 8.5 | SpeechSynthesis (P0) | Service |
+| SpeechRateController | State | 読み上げ速度の保持 | 8.3-8.5 | SpeechController (P0) | State |
 | CartaCardView | UI | 読み札の縦書き表示 | 5.1-5.4, 5.9, 7.1-7.2, 7.5-7.6 | ReadingFlowController (P0) | State |
 | AnswerModalView | UI | 解答モーダルと次へ操作 | 3.2-3.3, 5.5-5.9, 5.14 | ReadingFlowController (P0) | State |
 | HistoryListView | UI | 読み上げ済み履歴 | 5.10-5.13 | ReadingFlowController (P0) | State |
 | ControlPanel | UI | 開始/一時停止/リセット/トップ | 3.5, 6.1-6.2, 6.4-6.7 | ReadingFlowController (P0) | State |
 | LoadingOverlay | UI | 読み上げ待機表示 | 4.2 | ReadingFlowController (P1) | State |
-| SpeedControlPanel | UI | 速度スライダー | 8.1 | SpeechRateController (P0) | State |
+| SpeedControlPanel | UI | 速度スライダーとサンプル再生 | 8.1, 8.2 | SpeechRateController (P0) | State |
 
 ### UI Contracts
 
@@ -377,11 +379,12 @@ interface SpeechControllerService {
 | Field | Detail |
 |-------|--------|
 | Intent | 読み上げ速度の設定と共有 | 
-| Requirements | 8.2, 8.3 |
+| Requirements | 8.3, 8.4, 8.5 |
 
 **Responsibilities & Constraints**
 - スライダーの設定値を保持し、読み上げ時に供給する
-- 値変更時にサンプル読み上げをトリガーする
+- サンプル再生はボタン操作でのみトリガーする
+- スライダー変更ではサンプル読み上げを実行しない
 
 **Dependencies**
 - Inbound: SpeedControlPanel — 速度変更 (P0)
@@ -397,7 +400,7 @@ interface SpeechControllerService {
 - Concurrency strategy: 変更時に最新値を優先
 
 **Implementation Notes**
-- Integration: スライダー変更時に SpeechController を呼び出す
+- Integration: サンプル再生ボタン操作時に SpeechController を呼び出す
 - Validation: rate の範囲を UI 上で制約
 - Risks: サンプル読み上げと本読み上げの競合を cancel で抑制
 
@@ -444,7 +447,8 @@ interface SpeechControllerService {
 ### E2E/UI Tests
 - 札 UI が縦書きで中央配置され、カード高さが 50vh であること
 - 読み上げ中の文字送りと完了後の全文表示
-- 速度スライダー変更時のサンプル読み上げ
+- 速度スライダー変更でサンプルが再生されないこと
+- サンプル再生ボタン押下時の読み上げ
 - description が 15 文字ごとに改行されること
 - answer とふりがながモーダル表示され、次へボタンがモーダル内に表示されること
 

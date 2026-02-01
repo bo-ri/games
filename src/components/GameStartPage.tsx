@@ -313,6 +313,14 @@ export const GameStartPage = () => {
 
     speechController.cancel()
     clearTimers()
+    if (currentItem) {
+      const alreadyStored = historyItems.some(
+        (item) => item.description === currentItem.description && item.answer === currentItem.answer,
+      )
+      if (!alreadyStored) {
+        setHistoryItems((prev) => [currentItem, ...prev])
+      }
+    }
     const data = await ensureGameData()
     if (!data || currentPosition === null) {
       return
@@ -363,9 +371,12 @@ export const GameStartPage = () => {
 
   const handleRateChange = (nextRate: number) => {
     setRate(nextRate)
+  }
+
+  const handleSamplePlay = () => {
     void speechController.speak({
       text: sampleText,
-      rate: nextRate,
+      rate: rateRef.current,
       onBoundary: () => {},
       onEnd: () => {},
       onError: () => {},
@@ -439,6 +450,9 @@ export const GameStartPage = () => {
               value={rate}
               onChange={(event) => handleRateChange(Number(event.target.value))}
             />
+            <button type="button" onClick={handleSamplePlay}>
+              サンプル再生
+            </button>
           </div>
         </div>
       </header>
