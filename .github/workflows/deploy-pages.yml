@@ -1,0 +1,98 @@
+name: Deploy GitHub Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: "main にマージ済みの commit SHA"
+        required: true
+      base_path:
+        description: "任意のベースパス上書き (/repo/ 形式)"
+        required: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Checkout target commit
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.commit_sha }}
+          fetch-depth: 0
+
+      - name: Fetch main history
+        run: git fetch origin main --prune
+
+      - name: Record deploy request
+        run: |
+          echo "### Deploy request" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Commit: ${{ inputs.commit_sha }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Trigger: workflow_dispatch" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Validate commit eligibility
+        id: eligibility
+        run: |
+          set +e
+          git merge-base --is-ancestor "${{ inputs.commit_sha }}" "origin/main"
+          status=$?
+          set -e
+          if [ "$status" -eq 0 ]; then
+            echo "eligible=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$status" -eq 1 ]; then
+            echo "eligible=false" >> "$GITHUB_OUTPUT"
+            echo "reason=NotOnMain" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "eligible=false" >> "$GITHUB_OUTPUT"
+          echo "reason=UnknownCommit" >> "$GITHUB_OUTPUT"
+
+      - name: Reject ineligible commit
+        if: steps.eligibility.outputs.eligible != 'true'
+        run: |
+          echo "### Deploy rejected" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Reason: ${{ steps.eligibility.outputs.reason }}" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build
+        env:
+          BASE_PATH: ${{ inputs.base_path }}
+        run: pnpm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
+
+      - name: Record deploy success
+        if: success()
+        run: |
+          echo "### Deploy success" >> "$GITHUB_STEP_SUMMARY"
+          echo "- URL: ${{ steps.deploy.outputs.page_url }}" >> "$GITHUB_STEP_SUMMARY"
