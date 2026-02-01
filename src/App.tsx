@@ -5,7 +5,7 @@ import { TopPage } from "./components/TopPage"
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<TopPage />} />
         <Route path="/game/:gameId" element={<GameStartPage />} />
